@@ -1,0 +1,2 @@
+-- doing lots of ghci exercises
+-- holy shit, (->) is a type constructor?!
