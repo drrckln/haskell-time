@@ -20,3 +20,5 @@ f xs = w x 1
 \(x:xs) -> x
 
 f2 (a, b) = a
+
+-- got them right, went on to chapter 5
