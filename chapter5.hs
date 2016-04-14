@@ -1,3 +1,4 @@
 -- doing lots of ghci exercises
 -- holy shit, (->) is a type constructor?!
 -- got to the explanation about Foldable t
+-- did two more intermission exercises
