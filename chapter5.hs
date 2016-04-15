@@ -2,3 +2,4 @@
 -- holy shit, (->) is a type constructor?!
 -- got to the explanation about Foldable t
 -- did two more intermission exercises
+-- read about polymorphism
