@@ -16,3 +16,4 @@ hyp3 x y = y
 -- you don't know what b is, so you have no functions/methods
 -- available. You can only return it.
 
+-- learned about polymorphic constants
