@@ -1,1 +1,3 @@
 -- just starting
+-- quotRem gives the quotient and remainder in a tuple
+-- divMod does the same
