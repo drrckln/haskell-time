@@ -13,3 +13,5 @@ subtractThenAdd x y = (x - y) + 1
 -- because it's redundant. Fractional is a subset of Num.
 -- More explicitly, any Fractional is guaranteed to implement Num.
 
+-- Enum and Show
+
