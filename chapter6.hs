@@ -1,7 +1,7 @@
 -- just starting
 -- quotRem gives the quotient and remainder in a tuple
 -- divMod does the same
-
+import Data.List
 
 divideThenAdd :: Fractional a => a -> a -> a
 divideThenAdd x y = (x / y) + 1
@@ -88,4 +88,56 @@ comparePapus p p' = p > p'
 -- yup just tried, need to do that.
 -}
 
+i :: Num a => a
+i = 1
+-- ok, I was wrong. i :: a doesn't work since 1 is constrained by Num
 
+-- f :: Float
+-- f :: Num a => a
+-- won't work, 1.0 is Fractional a => a
+-- Fractional is a subclass of Num
+-- f :: Fractional a => a -- should work
+f :: RealFrac a => a -- I think this is fine, 1.0 is both Real and Fractional
+f = 1.0
+
+-- freud :: a -> a
+freud :: Ord a => a -> a
+-- should be fine, restricting to Ord only adds access to Ord methods, which
+-- aren't used anyhow.
+freud x = x
+
+-- freud' :: a -> a
+freud' :: Int -> Int
+-- this definition is parametrically polymorphic, so using any concrete type
+-- would work fine. It's an element of the set of all types.
+freud' x = x
+
+myX = 1 :: Int
+
+sigmund :: Int -> Int
+-- sigmund :: a -> a
+-- can't work, it throws away x and puts in myX. myX is an Int, so that
+-- constrains the type of a.
+sigmund x = myX
+
+sigmund' :: Int -> Int
+-- sigmund' :: Num a => a -> a -- still, what if you give it a Float?
+sigmund' x = myX
+
+
+-- jung :: Ord a => [a] -> a
+jung :: [Int] -> Int -- that's fine, narrowed
+jung xs = head (sort xs)
+
+-- young :: String -> Char
+young :: Ord a => [a] -> a
+-- fine, as we only use List (head) and Ord (sort)
+young xs = head (sort xs)
+
+mySort :: [Char] -> [Char]
+mySort = sort
+
+signifier :: [Char] -> Char
+-- signifier :: Ord a => [a] -> a
+-- breaks due to mySort being String -> String
+signifier xs = head (mySort xs)
