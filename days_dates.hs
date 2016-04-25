@@ -1,5 +1,6 @@
 data DayOfWeek =
     Mon | Tue | Weds | Thu | Fri | Sat | Sun
+    deriving (Ord, Show)
 
 -- day of week and numerical day of month
 data Date =
@@ -9,7 +10,7 @@ instance Eq DayOfWeek where
     (==) Mon Mon   = True
     (==) Tue Tue   = True
     (==) Weds Weds = True
-    (==) Thu Thus  = True
+    (==) Thu Thu   = True
     (==) Fri Fri   = True
     (==) Sat Sat   = True
     (==) Sun Sun   = True
