@@ -60,3 +60,32 @@ s2 = Sentence "Julie" "loves" "dogs"
 -- OK, it does typecheck, you just can't use it really. It's partially
 -- applied. Makes sense, since Sentence is a value constructor.
 -- "type" is type synonym
+
+data Rocks = Rocks String deriving (Eq, Show)
+
+data Yeah = Yeah Bool deriving (Eq, Show)
+
+data Papu = Papu Rocks Yeah deriving (Eq, Show)
+
+-- phew = Papu "chases" True
+-- won't typecheck, since Papu :: Rocks -> Yeah -> Papu
+-- there's no Rocks and Yeah constructors
+
+truth = Papu (Rocks "chomskydoz") (Yeah True)
+-- should typecheck
+
+equalityForAll :: Papu -> Papu -> Bool
+equalityForAll p p' = p == p'
+-- should work. We derived (Eq Papu), which should work because
+-- all the components implement Eq as well, since we derived
+-- those also
+
+{-
+comparePapus :: Papu -> Papu -> Bool
+comparePapus p p' = p > p'
+-- won't typecheck, since we didn't derive Ord for Papu
+-- if we do, we also need to derive Ord for Rocks and Yeah
+-- yup just tried, need to do that.
+-}
+
+
