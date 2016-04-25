@@ -59,3 +59,4 @@ s2 = Sentence "Julie" "loves" "dogs"
 -- should not, since s1 is incomplete? also what does "type" do
 -- OK, it does typecheck, you just can't use it really. It's partially
 -- applied. Makes sense, since Sentence is a value constructor.
+-- "type" is type synonym
