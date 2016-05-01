@@ -53,3 +53,5 @@ galapagosPenguin _                 = False
 -- if either value is True
 antarcticOrGalapagos :: Penguin -> Bool
 antarcticOrGalapagos p = (galapagosPenguin p) || (antarcticPenguin p)
+
+-- prep for R and Kaggle
