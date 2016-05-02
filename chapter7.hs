@@ -45,8 +45,8 @@ galapagosPenguin (Peng Galapagos) = True
 galapagosPenguin _                = False
 
 antarcticPenguin :: Penguin -> Bool
-galapagosPenguin (Peng Antarctica) = True
-galapagosPenguin _                 = False
+antarcticPenguin (Peng Antarctica) = True
+antarcticPenguin _                 = False
 
 -- in this final function, the || operator
 -- is an `or` function, which will return True
@@ -54,4 +54,17 @@ galapagosPenguin _                 = False
 antarcticOrGalapagos :: Penguin -> Bool
 antarcticOrGalapagos p = (galapagosPenguin p) || (antarcticPenguin p)
 
--- prep for R and Kaggle
+k :: (a, b) -> a
+k (x, y) = x
+
+--k1 :: Num a => a
+k1 = k ((4-1), 10)
+
+--k2 :: String
+k2 = k ("three", (1 + 2))
+
+--k3 :: Num a => a
+k3 = k (3, True)
+
+f :: (a, b, c) -> (d, e, f) -> ((a, d), (c, f))
+f (a, b, c) (d, e, f) = ((a, d), (c, f))
