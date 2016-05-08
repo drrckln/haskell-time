@@ -13,8 +13,7 @@ addOneIfOdd n = case odd n of
 
 addFive = \x -> \y -> (if x > y then y else x) + 5
 
-mflip f x y= f y x
-
+mflip f x y = f y x
 
 data WherePenguinsLive =
       Galapagos
@@ -95,3 +94,51 @@ nums x =
         LT -> -1
         GT -> 1
         EQ -> 0
+
+data Employee = Coder
+              | Manager
+              | Veep
+              | CEO
+              deriving (Eq, Ord, Show)
+
+reportBoss :: Employee -> Employee -> IO ()
+reportBoss e e' =
+  putStrLn $ show e ++ " is the boss of " ++ show e'
+
+codersRuleCEOsDrool :: Employee -> Employee -> Ordering
+codersRuleCEOsDrool Coder Coder = EQ
+codersRuleCEOsDrool Coder _     = GT
+codersRuleCEOsDrool _ Coder     = LT
+codersRuleCEOsDrool e e'        = compare e e'
+
+employeeRank :: (Employee -> Employee -> Ordering)
+                -> Employee
+                -> Employee 
+                -> IO ()
+employeeRank f e e' =
+  case f e e' of
+    GT -> reportBoss e e'
+    EQ -> putStrLn "Neither employee is the boss"
+    LT -> (flip reportBoss) e e'
+
+
+dodgy :: Num a => a -> a -> a
+dodgy x y = x + y * 10
+
+oneIsOne :: Num a => a -> a
+oneIsOne = dodgy 1
+
+oneIsTwo :: Num a => a -> a
+oneIsTwo = (flip dodgy) 2
+
+-- dodgy 1 0 == 1
+-- dodgy 1 1 == 11
+-- dodgy 2 2 == 22
+-- dodgy 1 2 == 21
+-- dodgy 2 1 == 12
+-- oneIsOne 1 == 11
+-- oneIsOne 2 == 21
+-- oneIsTwo 1 == 21
+-- oneIsTwo 2 == 22
+-- oneIsOne 3 == 31
+-- oneIsTwo 3 == 23
